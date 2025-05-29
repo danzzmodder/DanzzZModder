@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mod DanzZ - Publik</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(135deg, #000, #111);
+      color: #fff;
+      padding: 40px 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+    h1 {
+      color: #00ffff;
+      text-shadow: 0 0 10px #00ffff;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      background: #222;
+      margin: 10px 0;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #00ffff44;
+    }
+    a {
+      color: #00ffff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Daftar Mod DanzZ</h1>
+  <ul id="modList"></ul>
+
+  <script>
+    // Ambil daftar mod dari localStorage (atau kosong)
+    const mods = JSON.parse(localStorage.getItem('mods') || '[]');
+    const listEl = document.getElementById('modList');
+
+    if (mods.length === 0) {
+      listEl.innerHTML = '<li>Belum ada mod tersedia.</li>';
+    } else {
+      mods.forEach(mod => {
+        const li = document.createElement('li');
+        li.innerHTML = `<a href="${mod.link}" target="_blank" rel="noopener noreferrer">${mod.title}</a>`;
+        listEl.appendChild(li);
+      });
+    }
+  </script>
+</body>
+</html>
